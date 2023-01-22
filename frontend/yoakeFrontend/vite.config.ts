@@ -36,7 +36,7 @@ export default defineConfig({
     port: 3000,
   },
   build: {
-    outDir: "../../main/templates/main/",
-    assetsDir: "./static/",
+    outDir: "../../main/templates/main",
+    assetsDir: "./static",
   },
 })
