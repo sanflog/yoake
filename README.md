@@ -1,2 +1,0 @@
-# yoake
-project yoake
