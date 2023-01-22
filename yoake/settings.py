@@ -30,6 +30,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -116,13 +117,19 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Static Root setting
+# STATIC_ROOT = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "main/templates/main/static/",
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Static Root setting
-STATIC_ROOT = 'static/'
 
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
 IS_HEROKU = "DYNO" in os.environ
