@@ -25,8 +25,6 @@ SECRET_KEY = 'django-insecure-qimb#8pi(2@y)kzdb53$mcja&8o9$l)4gfb@fdtk%d*!@a)(r_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -126,6 +124,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = 'static/'
 
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
+IS_HEROKU = "DYNO" in os.environ
+
 if IS_HEROKU:
     ALLOWED_HOSTS = ["*"]
 else:
