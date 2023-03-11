@@ -14,4 +14,6 @@ def index(request):
         'time' : fn.time,
         'decideTo' : fn.decideTo
     }
-    return JsonResponse(obj)
+    response = JsonResponse(obj)
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
