@@ -30,6 +30,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    'thinkingAnalyzer.apps.ThinkinganalyzerConfig',
     'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
