@@ -24,6 +24,7 @@ class thinkingFunction(models.Model):
     ]
 
     title = models.CharField(max_length=50)     
+    detail = models.CharField(max_length=500, blank=True)
     target = models.CharField(max_length=50)
     function = models.CharField(max_length=20, choices=functionChoices)
     fType = models.CharField(max_length=20, choices=typeChoices)

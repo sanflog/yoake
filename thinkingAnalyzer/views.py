@@ -8,6 +8,7 @@ def index(request):
     fn = f[0]
     obj = {
         'title' : fn.title,
+        'detail' : fn.detail,
         'target' : fn.target,
         'function' : fn.function,
         'fType' : fn.fType,
