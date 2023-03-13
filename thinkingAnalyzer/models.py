@@ -1,6 +1,15 @@
 from django.db import models
 
+
 class thinkingFunction(models.Model):
+    title = models.CharField(max_length=50, primary_key=True)     
+    detail = models.CharField(max_length=500, blank=True)
+
+    def __str__(self):
+        return self.title
+
+
+class thinkingFunctionDetail(models.Model):
     functionChoices = [
         ('Perceive', 'Perceive'),
         ('Judgment', 'Judgment')
@@ -20,11 +29,12 @@ class thinkingFunction(models.Model):
         ('Past', 'Past'),
         ('Now', 'Now'),
         ('Feature', 'Feature'),
-        ('Possibility', 'possibility')
+        ('Possibility', 'possibility'),
+        ('None', 'None'),
     ]
 
-    title = models.CharField(max_length=50)     
-    detail = models.CharField(max_length=500, blank=True)
+    thinkingFunction = models.ForeignKey(thinkingFunction, on_delete=models.CASCADE,)
+    detailNo = models.IntegerField(null=True)
     target = models.CharField(max_length=50)
     function = models.CharField(max_length=20, choices=functionChoices)
     fType = models.CharField(max_length=20, choices=typeChoices)
@@ -32,4 +42,4 @@ class thinkingFunction(models.Model):
     decideTo = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.title
+        return self.thinkingFunction.title + '_' + str(self.detailNo)

@@ -1,20 +1,18 @@
+import json
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
-from .models import thinkingFunction
+from .models import thinkingFunction, thinkingFunctionDetail
 
 def index(request):
-    f = thinkingFunction.objects.all()
-    fn = f[0]
-    obj = {
-        'title' : fn.title,
-        'detail' : fn.detail,
-        'target' : fn.target,
-        'function' : fn.function,
-        'fType' : fn.fType,
-        'time' : fn.time,
-        'decideTo' : fn.decideTo
+    TF = list(thinkingFunction.objects.all().values())
+    TFD = list(thinkingFunctionDetail.objects.all().values())
+
+    jsonTF = {
+        'thinkingFunction' : TF,
+        'thinkingFunctionDetail' : TFD,
     }
-    response = JsonResponse(obj)
+
+    response = JsonResponse(jsonTF)
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
